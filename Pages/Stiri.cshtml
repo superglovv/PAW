@@ -1,0 +1,37 @@
+﻿@page
+@model IndexModel
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Știri Fitness</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Știri Fitness</h1>
+
+        @foreach (var stire in Model.Stiri)
+        {
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5>
+                        <a class="text-decoration-none" asp-page="/Stire" asp-route-stireId="@stire.Id">@stire.Titlu</a>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">@stire.Lead</p>
+                    <footer>
+                        <small class="text-muted">
+                            Adăugat de <strong>@stire.Autor</strong> la data de <strong>@stire.DataAdaugarii.ToString("dd MMM yyyy")</strong> în categoria <strong>@stire.Categorie.Nume</strong>.
+                        </small>
+                    </footer>
+                </div>
+            </div>
+        }
+
+    </div>
+</body>
+</html>
